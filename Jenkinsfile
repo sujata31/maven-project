@@ -13,21 +13,21 @@ pipeline{
 			}
 			stage('test source code'){
 				steps{
-					withMaven (maven: 'LocalMaven'){
+					withMaven (maven: 'my maven'){
 					sh 'mvn test'
 					}
 				}
 			}
 			stage('package source code'){
 				steps{
-					withMaven (maven: 'LocalMaven'){
+					withMaven (maven: 'my maven'){
 					sh 'mvn package'
 					}
 				}
 			}
 			stage('install sorce code'){
 				steps{
-					withMaven (maven: 'LocalMaven'){
+					withMaven (maven: 'my maven'){
 					sh 'mvn install'
 					}
 				}
