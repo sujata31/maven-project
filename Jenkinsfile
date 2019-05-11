@@ -34,7 +34,7 @@ pipeline{
 			}
 			stage('deploy to tomcat'){
 				steps{
-					sshagent(['19e7f38a-3933-4c2a-a04a-b7507eccb72e']) {
+					sshagent(['19e7f38a-3933-4c2a-a04a-b7507eccb72e']){
 					sh 'ssh -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.33.175:/var/lib/tomcat/webapps']
 					}
 				}
