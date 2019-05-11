@@ -1,23 +1,34 @@
-node {
-    stage('build'){
-        echo "building"
-    }
-}
-node {
-    stage('test'){
-        echo "testing"
-    }
-}
-stage('Get approval'){
-    input "Deploy to qa?"
-}
-node {
-    stage('deploy to qa'){
-        echo "deploying"
-    }
-}
-node {
-    stage('deploy to pre prod'){
-        echo "deploying"
-    }
-}
+Pipeline{
+	any agent{
+		stages{
+			stage('scm checkout'){
+				steps{
+					git 'https://github.com/sujata31/maven-project.git'}}
+			stage('compile source code'){
+				steps{
+					withMaven (maven: 'my maven'){
+					sh 'mvn compile'
+					}
+				}
+			}
+			stage('test source code'){
+				steps{
+					withMaven (maven: 'LocalMaven'){
+					sh 'mvn test'
+					}
+				}
+			}
+			stage('package source code'){
+				steps
+					withMaven (maven: 'LocalMaven'){
+					sh 'mvn package'
+					}
+				}
+			}
+			stage('install sorce code'){
+				steps
+					withMaven (maven: 'LocalMaven'){
+					sh 'mvn install'
+					}
+				}
+			}
