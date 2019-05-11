@@ -19,14 +19,14 @@ pipeline{
 				}
 			}
 			stage('package source code'){
-				steps
+				steps{
 					withMaven (maven: 'LocalMaven'){
 					sh 'mvn package'
 					}
 				}
 			}
 			stage('install sorce code'){
-				steps
+				steps{
 					withMaven (maven: 'LocalMaven'){
 					sh 'mvn install'
 					}
