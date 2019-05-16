@@ -13,7 +13,7 @@ Pipeline{
 		stage('compile source code'){
 		
 		    steps{
-			    withMaven (mavne: 'my maven'){
+			    withMaven (maven: 'my maven'){
 			      sh 'mvn compile'
 			    }			
 			}
