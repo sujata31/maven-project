@@ -4,13 +4,11 @@ Pipeline{
 	stages{
 	
 	    stage('scm checkout'){
-		
-		    steps{
-			   git 'https://github.com/sujata31/maven-project.git'	
-            }    		
+		   git 'https://github.com/sujata31/maven-project.git'	
+              		
 		}
 		
-		stage('compile source code'){
+		stage('compile stage'){
 		
 		    steps{
 			    withMaven (maven: 'my maven'){
@@ -19,7 +17,7 @@ Pipeline{
 			}
 		}
 		
-		stage('testing'){
+		stage('testing stage'){
 		
 		    steps{
 			    withMaven (maven: 'my maven'){
@@ -28,7 +26,7 @@ Pipeline{
 			}
 		}
 		
-		stage('package source code'){
+		stage('package stage'){
 		
             steps{
                 withMaven (maven: 'my maven'){
@@ -37,7 +35,7 @@ Pipeline{
 		    }
 		}
 		
-		stage('istall source code'){
+		stage('istall stage'){
 		
 		    steps{
 			    withMaven (maven: 'my maven'){
